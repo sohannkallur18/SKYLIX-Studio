@@ -1,3 +1,5 @@
+import path from "path";
+import { fileURLToPath } from "url";
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -13,6 +15,8 @@ import { sendEmail } from './utils/email.js';
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -316,6 +320,12 @@ app.use('/api/chatbot', chatbotRoutes);
 
 // ─── User Auth Routes ───────────────────────────────────────
 app.use('/api/auth', userAuthRoutes);
+// ─── Serve Frontend (React/Vite Build) ──────────────────────
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 
 // ─── Global Error Handler ───────────────────────────────────
 app.use((err, req, res, next) => {
@@ -323,9 +333,9 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, error: 'Internal server error.' });
 });
 
-// ─── Catch-All ──────────────────────────────────────────────
-app.use('*', (req, res) => {
-  res.status(404).json({ error: 'Not found' });
+// ─── React Catch-All (Frontend Routing) ─────────────────────
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
 // ─── Start Server ───────────────────────────────────────────
