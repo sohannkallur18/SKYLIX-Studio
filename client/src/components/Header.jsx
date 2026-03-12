@@ -44,15 +44,7 @@ export default function Header() {
             <div className="galaxy-header-pill">
                 {/* Brand */}
                 <Link to="/" className="galaxy-brand">
-                    <svg className="galaxy-brand-icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#galaxy-brand-grad)" />
-                        <defs>
-                            <linearGradient id="galaxy-brand-grad" x1="2" y1="2" x2="22" y2="22">
-                                <stop stopColor="#818CF8" />
-                                <stop offset="1" stopColor="#C084FC" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
+                    <div className="galaxy-brand-icon"></div>
                     SKYLIX
                 </Link>
 
