@@ -320,11 +320,17 @@ app.use('/api/chatbot', chatbotRoutes);
 
 // ─── User Auth Routes ───────────────────────────────────────
 app.use('/api/auth', userAuthRoutes);
+
+// ─── Serve React Frontend ─────────────────────────────
+const clientDist = path.join(__dirname, "../client/dist");
+
+app.use(express.static(clientDist));
 // ─── Serve Frontend (React/Vite Build) ──────────────────────
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+// ─── React Catch-All (Frontend Routing) ──────────────
+app.get("*", (req, res) => {
+  res.sendFile(path.join(clientDist, "index.html"));
 });
 
 // ─── Global Error Handler ───────────────────────────────────
