@@ -49,7 +49,7 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="galaxy-footer-brand">
                         <Link to="/" className="galaxy-brand" style={{ marginBottom: '16px' }}>
-                            <span className="galaxy-brand-dot" />
+                            <img src="/logo.png" alt="Skylix Logo" className="galaxy-brand-icon" style={{ width: '28px', height: '28px' }} />
                             SKYLIX
                         </Link>
                         <p className="galaxy-footer-tagline">

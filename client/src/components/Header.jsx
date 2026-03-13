@@ -44,7 +44,7 @@ export default function Header() {
             <div className="galaxy-header-pill">
                 {/* Brand */}
                 <Link to="/" className="galaxy-brand">
-                    <div className="galaxy-brand-icon"></div>
+                    <img src="/logo.png" alt="Skylix Logo" className="galaxy-brand-icon" />
                     SKYLIX
                 </Link>
 
