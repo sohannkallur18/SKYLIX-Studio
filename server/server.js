@@ -43,14 +43,14 @@ async function getPublicIP() {
 }
 
 async function connectDB(retries = MAX_RETRIES) {
-  if (!process.env.MONGO_URI) {
-    console.warn('⚠ MONGO_URI not set. Running without database.');
+  if (!process.env.MONGODB_URI) {
+    console.warn('⚠ MONGODB_URI not set. Running without database.');
     return false;
   }
 
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
-      await mongoose.connect(process.env.MONGO_URI, {
+      await mongoose.connect(process.env.MONGODB_URI, {
         serverSelectionTimeoutMS: 5000,
         socketTimeoutMS: 45000,
         family: 4
@@ -63,7 +63,7 @@ async function connectDB(retries = MAX_RETRIES) {
       if (attempt === retries) {
         console.log('  Attempting fallback with insecure SSL...');
         try {
-          await mongoose.connect(process.env.MONGO_URI, {
+          await mongoose.connect(process.env.MONGODB_URI, {
             serverSelectionTimeoutMS: 5000,
             family: 4,
             tlsInsecure: true
