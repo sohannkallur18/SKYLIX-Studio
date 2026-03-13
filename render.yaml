@@ -13,7 +13,7 @@ services:
         value: production
       - key: PORT
         value: 5000
-      - key: MONGO_URI
+      - key: MONGODB_URI
         sync: false
         # NOTE: You MUST set this in the Render dashboard manually!
       - key: JWT_SECRET
