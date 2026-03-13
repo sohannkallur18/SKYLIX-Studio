@@ -1,0 +1,25 @@
+services:
+  # A unified web service serving both frontend and backend
+  - type: web
+    name: skylix-app
+    env: node
+    # Running from root directory gives us access to both client and server folders 
+    # to build the client and start the server using npm workspaces or directly.
+    # But since it's not a unified workspace, we'll run commands specifically.
+    buildCommand: npm install --prefix server && npm install --prefix client && npm run build --prefix client
+    startCommand: npm start --prefix server
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        sync: false
+        # NOTE: You MUST set this in the Render dashboard manually!
+      - key: JWT_SECRET
+        generateValue: true
+        # Render will generate a safe random string if not provided
+      - key: ADMIN_DEFAULT_PASSWORD
+        sync: false
+      - key: NOTIFICATION_EMAIL
+        sync: false

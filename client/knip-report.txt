@@ -1,0 +1,21 @@
+[93m[4mUnused files[24m[39m (3)
+replace_fonts.cjs              
+src/components/HorizonGlobe.jsx
+src/components/PricingCard.jsx 
+[93m[4mUnused dependencies[24m[39m (3)
+framer-motion  package.json:12:10
+lucide-react   package.json:13:10
+uuid           package.json:18:10
+[93m[4mUnused devDependencies[24m[39m (4)
+eslint                       package.json:24:10
+eslint-plugin-react          package.json:25:10
+eslint-plugin-react-hooks    package.json:26:10
+eslint-plugin-react-refresh  package.json:27:10
+[93m[4mUnused exports[24m[39m (7)
+Server    src/components/Icons.jsx:32:14 
+BookOpen  src/components/Icons.jsx:36:14 
+Menu      src/components/Icons.jsx:102:14
+Quote     src/components/Icons.jsx:134:14
+LinkedIn  src/components/Icons.jsx:156:14
+GitHub    src/components/Icons.jsx:158:14
+Twitter   src/components/Icons.jsx:160:14

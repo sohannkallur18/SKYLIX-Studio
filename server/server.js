@@ -147,7 +147,15 @@ app.use(helmet({
 
 // ─── CORS (UPDATED FOR PRODUCTION) ─────────────────────────
 app.use(cors({
-  origin: "*",
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    // Allow all origins since this is a public api, or restrict as needed
+    // In production, you might want to replace this with an allowlist like:
+    // const allowedOrigins = ['https://skylix-client.onrender.com'];
+    // if(allowedOrigins.indexOf(origin) === -1) return callback(new Error('CORS policy violation'), false);
+    return callback(null, true);
+  },
   credentials: true
 }));
 
