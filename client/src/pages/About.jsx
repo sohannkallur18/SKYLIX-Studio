@@ -45,7 +45,7 @@ export default function About() {
                     </div>
 
                     {/* Vision / Mission Cards */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '24px', marginBottom: '80px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginBottom: '80px' }}>
                         <TiltCard className="bento-card reveal" style={{ padding: '44px' }}>
                             <Award size={24} style={{ color: 'var(--accent)', marginBottom: '16px' }} />
                             <h2 style={{ fontSize: '22px', fontWeight: 700, marginBottom: '16px' }}>Our Vision</h2>

@@ -733,7 +733,7 @@ export default function Pricing() {
                     </div>
 
                     {/* ── Pricing Cards ─────────────────── */}
-                    <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', alignItems: 'stretch' }}>
+                    <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'stretch' }}>
                         {pricingData[activeService].tiers.map((tier, idx) => {
                             const price = isAnnual ? tier.annual : tier.monthly;
                             return (

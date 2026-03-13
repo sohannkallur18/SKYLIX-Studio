@@ -57,7 +57,7 @@ export default function Contact() {
                         <p className="p" style={{ marginTop: '16px', marginInline: 'auto' }}>Describe your project requirements. We'll respond within 24 hours with a scoped proposal and technical recommendation.</p>
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '40px', alignItems: 'start' }}>
+                    <div className="contact-layout-grid">
                         {/* Contact Form */}
                         <form className="bento-card reveal" style={{ padding: '44px' }} onSubmit={handleSubmit}>
                             <div className="form-row">
