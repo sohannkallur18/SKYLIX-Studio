@@ -128,6 +128,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 *,
@@ -138,6 +139,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: hidden;
   font-family: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text);
   background-color: var(--bg);
@@ -2171,13 +2173,27 @@ textarea::placeholder {
     display: flex;
   }
 
-  .galaxy-login-link {
+  .galaxy-login-link,
+  .galaxy-header-actions .galaxy-cta-btn {
     display: none;
   }
 
-  .galaxy-cta-btn {
-    padding: 8px 18px;
-    font-size: 13px;
+  .galaxy-mobile-auth {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  [data-theme="light"] .galaxy-mobile-auth {
+    border-top-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .galaxy-header-pill,
+  .galaxy-header--scrolled .galaxy-header-pill {
+    padding: 6px 16px;
   }
 
   .galaxy-hero-title {
@@ -3569,6 +3585,19 @@ textarea::placeholder {
 }
 
 /* ── Responsive: stack form rows on small screens ──────── */
+.contact-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 600px) {
   .form-row {
     grid-template-columns: 1fr;

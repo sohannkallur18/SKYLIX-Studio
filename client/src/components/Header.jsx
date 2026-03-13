@@ -59,6 +59,14 @@ export default function Header() {
                             {link.name}
                         </Link>
                     ))}
+                    <div className="galaxy-mobile-auth">
+                        {isAuthenticated ? (
+                            <button onClick={handleLogout} className="galaxy-nav-link" style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: 'inherit', padding: '12px 14px', textAlign: 'left', width: '100%' }}>Log Out</button>
+                        ) : (
+                            <Link to="/login" className="galaxy-nav-link" onClick={() => setMobileOpen(false)}>Log In</Link>
+                        )}
+                        <Link to="/signup" className="galaxy-cta-btn" style={{ width: '100%', textAlign: 'center', marginTop: '16px' }} onClick={() => setMobileOpen(false)}>Get Started</Link>
+                    </div>
                 </nav>
 
                 {/* Right actions */}
