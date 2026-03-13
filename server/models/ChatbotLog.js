@@ -48,7 +48,6 @@ const chatbotLogSchema = new mongoose.Schema({
 });
 
 // Indexes
-chatbotLogSchema.index({ sessionId: 1 });
 chatbotLogSchema.index({ startedAt: -1 });
 chatbotLogSchema.index({ activeTab: 1 });
 
