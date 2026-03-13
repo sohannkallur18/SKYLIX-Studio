@@ -184,11 +184,30 @@ app.post('/api/contact', async (req, res) => {
 
   const notificationEmail = process.env.NOTIFICATION_EMAIL || 'sohannkallur18@gmail.com';
 
-  sendEmail({
+  const htmlContent = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
+      <h2 style="color: #4f46e5; margin-top: 0;">New Contact Inquiry</h2>
+      <p><strong>Name:</strong> ${sanitized.name}</p>
+      <p><strong>Email:</strong> ${sanitized.email}</p>
+      <p><strong>Phone:</strong> ${sanitized.phone || 'N/A'}</p>
+      <p><strong>Company:</strong> ${sanitized.company || 'N/A'}</p>
+      <p><strong>Service:</strong> ${sanitized.service}</p>
+      <p><strong>Budget:</strong> ${sanitized.budget}</p>
+      <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 20px 0;" />
+      <p><strong>Message:</strong></p>
+      <p style="white-space: pre-wrap;">${sanitized.message}</p>
+    </div>
+  `;
+
+  const emailResult = await sendEmail({
     to: notificationEmail,
     subject: `New Contact Enquiry: ${sanitized.name}`,
-    html: sanitized.message
+    html: htmlContent
   });
+
+  if (!emailResult.success) {
+    return res.status(500).json({ success: false, error: 'Email Delivery Failed: ' + emailResult.error });
+  }
 
   res.status(200).json({
     success: true,

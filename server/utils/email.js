@@ -4,7 +4,7 @@ export const sendEmail = async ({ to, subject, html }) => {
     try {
         if (!process.env.SMTP_HOST || !process.env.SMTP_PORT || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
             console.warn('⚠ Email notification disabled: SMTP credentials are not fully configured in .env');
-            return false;
+            return { success: false, error: 'Missing SMTP credentials in Environment Variables' };
         }
 
         const transporter = nodemailer.createTransport({
@@ -25,9 +25,9 @@ export const sendEmail = async ({ to, subject, html }) => {
         });
 
         console.log(`✦ Email sent: ${info.messageId}`);
-        return true;
+        return { success: true };
     } catch (error) {
         console.error('✖ Error sending email:', error.message);
-        return false;
+        return { success: false, error: error.message };
     }
 };

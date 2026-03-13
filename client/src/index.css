@@ -2195,7 +2195,6 @@ textarea::placeholder {
   object-fit: cover;
   flex-shrink: 0;
   filter: drop-shadow(0 0 8px rgba(129, 140, 248, 0.5));
-  animation: brand-spin 12s linear infinite;
 }
 
 @keyframes brand-spin {
